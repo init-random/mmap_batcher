@@ -15,6 +15,7 @@ Under the covers, this uses a memory mapped file and file byte offsets (to the b
 A common use case is below. 
 
 ```
+# 2 epoches; batch size 3
 mmb = MmapBatcher('/tmp/numbers.txt', batch_size=3)
 for epoch in mmb.epochs(2):
     for b in epoch.batches():
