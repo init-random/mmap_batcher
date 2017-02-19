@@ -1,14 +1,18 @@
+import mmap
+import re
+
+
 class MmapBatcher:
     
-    def __init__(self, filename, batch_size=100, offsets=None, shuffle=True, ignore_leftovers=True,
+    def __init__(self, filename, batch_size=100, shuffle=True, ignore_leftovers=True,
                  skip_blank_lines=True, comment_char='#'):
         self.filename = filename
         self.batch_size = batch_size
-        self.offsets = offsets
         self.shuffle = shuffle
         self.ignore_leftovers = ignore_leftovers
         self.skip_blank_lines = skip_blank_lines
         self.comment_char = comment_char
+        self.offsets = None
         
     def batches(self):
         if self.offsets is None:
